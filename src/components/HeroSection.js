@@ -1,6 +1,8 @@
 import React from "react";
 import { Col, Divider, Row, Card } from "antd";
 import { useState, useEffect } from "react";
+import { ExclamationCircleOutlined } from '@ant-design/icons';
+import { Button, Modal, Space } from 'antd';
 
 const style: React.CSSProperties = {
   background: "#FFFFFF",
@@ -8,6 +10,36 @@ const style: React.CSSProperties = {
 };
 
 const { Meta } = Card;
+
+const LocalizedModal = () => {
+    const [open, setOpen] = useState(false);
+    const showModal = () => {
+      setOpen(true);
+    };
+    const hideModal = () => {
+      setOpen(false);
+    };
+    return (
+      <>
+        <Button type="primary" onClick={showModal}>
+          Modal
+        </Button>
+        <Modal
+          title="Modal"
+          open={open}
+          onOk={hideModal}
+          onCancel={hideModal}
+          okText="Open"
+          cancelText="Close"
+        >
+          <p>Bla bla ...</p>
+          <p>Bla bla ...</p>
+          <p>Bla bla ...</p>
+        </Modal>
+      </>
+    );
+  };
+
 
 const HeroSection = () => {
   const [data, setData] = useState({});
@@ -30,8 +62,25 @@ const HeroSection = () => {
     setTimeout(fetchData, 2000);
   }, [id]);
 
+  const [modal, contextHolder] = Modal.useModal();
+  const confirm = () => {
+    modal.confirm({
+      title: 'Confirm',
+      icon: <ExclamationCircleOutlined />,
+      content: 'Bla bla ...',
+      okText: 'Open',
+      cancelText: 'Close',
+    });
+  };
+
+
   return (
     <div>
+        <Space>
+        <LocalizedModal />
+        <Button onClick={confirm}>Confirm</Button>
+      </Space>
+      {contextHolder}
       <Divider orientation="left"></Divider>
       <Row gutter={16}>
         <Col className="gutter-row" span={6}>
