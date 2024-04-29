@@ -1,5 +1,6 @@
 import React from "react";
 import { Col, Divider, Row, Card } from "antd";
+import { useState, useEffect } from "react";
 
 const style: React.CSSProperties = {
   background: "#FFFFFF",
@@ -9,6 +10,26 @@ const style: React.CSSProperties = {
 const { Meta } = Card;
 
 const HeroSection = () => {
+  const [data, setData] = useState({});
+  const [value, setValue] = useState(1);
+  const [id, setId] = useState(1);
+  const [loading, setLoading] = useState(true);
+
+  const idUpdater = () => {
+    setLoading(true);
+    setId(value);
+  };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await fetch(`https://fakestoreapi.com/products./${id}`);
+      const response = await data.json();
+      setData(response);
+      setLoading(false);
+    };
+    setTimeout(fetchData, 2000);
+  }, [id]);
+
   return (
     <div>
       <Divider orientation="left"></Divider>
