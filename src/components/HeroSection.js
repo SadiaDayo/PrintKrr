@@ -1,19 +1,97 @@
-import profile from "../assets/images/profile.jpeg";
+import React from "react";
+import { Col, Divider, Row, Card } from "antd";
 
-export const HeroSection = () => {
+const style: React.CSSProperties = {
+  background: "#FFFFFF",
+  padding: "8px 50px",
+};
+
+const { Meta } = Card;
+
+const HeroSection = () => {
   return (
-    <>
-      <div className="container hero-section">
-        <div className="row">
-          <div className="col col-sm-12 col-md-6 col-lg-6">
-            <h1 className="title-section">Hi, Sadia Here</h1>
-            <h3 className="sub-heading">Software Engineer</h3>
+    <div>
+      <Divider orientation="left"></Divider>
+      <Row gutter={16}>
+        <Col className="gutter-row" span={6}>
+          <div style={style}>
+            <Card
+              hoverable
+              style={{ width: 240 }}
+              cover={
+                <img
+                  alt="example"
+                  src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
+                />
+              }
+            >
+              <Meta
+                title="Europe Street beat"
+                description="www.instagram.com"
+              />
+            </Card>
           </div>
-          <div className="col col-sm-12 col-md-6 col-lg-6">
-            <img src={profile} alt="Profile" />
+        </Col>
+        <Col className="gutter-row" span={6}>
+          <div style={style}>
+            <Card
+              hoverable
+              style={{ width: 240 }}
+              cover={
+                <img
+                  alt="example"
+                  src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
+                />
+              }
+            >
+              <Meta
+                title="Europe Street beat"
+                description="www.instagram.com"
+              />
+            </Card>
           </div>
-        </div>
-      </div>
-    </>
+        </Col>
+        <Col className="gutter-row" span={6}>
+          <div style={style}>
+            <Card
+              hoverable
+              style={{ width: 240 }}
+              cover={
+                <img
+                  alt="example"
+                  src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
+                />
+              }
+            >
+              <Meta
+                title="Europe Street beat"
+                description="www.instagram.com"
+              />
+            </Card>
+          </div>
+        </Col>
+        <Col className="gutter-row" span={6}>
+          <div style={style}>
+            <Card
+              hoverable
+              style={{ width: 240 }}
+              cover={
+                <img
+                  alt="example"
+                  src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
+                />
+              }
+            >
+              <Meta
+                title="Europe Street beat"
+                description="www.instagram.com"
+              />
+            </Card>
+          </div>
+        </Col>
+      </Row>
+    </div>
   );
 };
+
+export default HeroSection;
